@@ -9,7 +9,7 @@ print(response)
  
 import json  
 data=response.json()  
-print(json.dumps(data,indent=4))  
+json.dumps(data,indent=4)
   
 Real_Time_Currency_Rate =data["Realtime Currency Exchange Rate"]  
 ExchangeRate=(float(Real_Time_Currency_Rate['5. Exchange Rate'])) 

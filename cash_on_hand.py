@@ -8,7 +8,7 @@ response = requests.get(url)
  
 import json 
 data = response.json() 
-print(json.dumps(data,indent=4)) 
+json.dumps(data,indent=4)
 
  
 Realtime_currency_exchange = data["Realtime Currency Exchange Rate"] 
