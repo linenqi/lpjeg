@@ -4,16 +4,20 @@ import requests
 my_api = 'VSAFQ7CP9MDL4PCL'
 url= 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey={my_api}'
  
+<<<<<<< HEAD
 response = requests.get(url)
 #use .json to retrieve data and stored as JSON object from the API and name it as data_retrieved
 import json 
 data = response.json() 
 print(json.dumps(data,indent=4)) 
+=======
+>>>>>>> d8f02357b98482a38bd7e3a01a9b3e47d28ff960
 response= requests.get(url) 
 try: 
     import json 
     data=response.json() 
     print(json.dumps(data,indent=4)) 
+<<<<<<< HEAD
 
     #extract Realtime Currency Exchange Rate from data_retrieved and set it to variable, Realtime_currency_exchange
     Realtime_currency_exchange = data["Realtime Currency Exchange Rate"] 
@@ -21,19 +25,32 @@ try:
     Exchange_Rate=(float(Realtime_currency_exchange['5. Exchange Rate'])) 
     print(Exchange_Rate)
 
+=======
+
+    
+    Realtime_currency_exchange = data["Realtime Currency Exchange Rate"] 
+    Exchange_Rate=(float(Realtime_currency_exchange['5. Exchange Rate'])) 
+    print(Exchange_Rate)
+
+>>>>>>> d8f02357b98482a38bd7e3a01a9b3e47d28ff960
     import re 
     from pathlib import Path
     #import csv moduele
     import csv 
+<<<<<<< HEAD
     
     #assign file path to csv_reports and extend to cash-on-hand-usd.csv
     file_path=Path.cwd()/"csv_reports"/"cash_on_hand-usd.csv"
+=======
+    file_path=Path.cwd()/"csv_reports"/"cash-on-hand-usd.csv"
+>>>>>>> d8f02357b98482a38bd7e3a01a9b3e47d28ff960
 
     with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file: 
         #use csv.reader to read data in the file
         reader = csv.reader(file) 
         #ignore the first row of the data in cash_on_hand_usd.csv
         next(reader) 
+<<<<<<< HEAD
         #create an empty list and name it cash_on_hand 
         cash_on_hand=[] 
         #create an flag list and name it loss_days
@@ -54,6 +71,20 @@ try:
         else: 
 
             #if the current_figure is smaller or equals to the pre_figure the current_figure will be replaced by the pre_figure 
+=======
+        cash_on_hand=[] 
+        loss_days=[] 
+        for values in reader: 
+            cash_on_hand.append(values) 
+        
+    
+    prev_figure=float(cash_on_hand[0][1]) 
+    day=cash_on_hand 
+    for current_figure in cash_on_hand: 
+        if float(current_figure[1]) >= float(prev_figure): 
+            prev_figure=float(current_figure[1])  #replace prev with curr 
+        else: 
+>>>>>>> d8f02357b98482a38bd7e3a01a9b3e47d28ff960
             difference = float(prev_figure) - float(current_figure[1])   
             def convertUSD_SGD(USD):         
                 """ 
@@ -61,6 +92,7 @@ try:
             - one parameter required USD (as integer or float) 
             """ 
                 return USD * Exchange_Rate 
+<<<<<<< HEAD
                 #create a variable known as SGD and assign the converted amount from USD to SGD into the variable, SGD
             SGD=(convertUSD_SGD(USD=difference)) 
             print(SGD)
@@ -71,9 +103,21 @@ try:
             #set day and cash_on_hand value as Cash
             Cash=(day,SGD) 
             #append the cash_on_hand value into loss_days
+=======
+            SGD=(convertUSD_SGD(USD=difference)) 
+            print(SGD)
+
+            day=current_figure[0] 
+            prev_figure=float(current_figure[1]) 
+            Cash=(day,SGD) 
+>>>>>>> d8f02357b98482a38bd7e3a01a9b3e47d28ff960
             loss_days.append(Cash) 
             prev_figure=float(current_figure[1]) 
             
     print(loss_days)
 except Exception as e:
+<<<<<<< HEAD
         print("An error has occured.\nReason:{e}")
+=======
+        print("An error has occured.\nReason:{e}")   
+>>>>>>> d8f02357b98482a38bd7e3a01a9b3e47d28ff960
