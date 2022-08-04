@@ -1,3 +1,4 @@
+
 from pathlib import Path 
 import csv 
 import requests 
@@ -69,5 +70,10 @@ try:
             loss_days.append(Cash)
             prev_figure=float(current_figure[1])
     print(loss_days)
+<<<<<<< HEAD
 except Exception:
     print("An error has occured")   
+=======
+except Exception as e:
+        print("An error has occured.\nReason:{e}")   
+>>>>>>> a6e3d805be808ba8361bc878cc0366ad8831a334
