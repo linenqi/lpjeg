@@ -13,11 +13,8 @@ try:
 except Exception as e:
         print("An error has occured.\nReason:{e}")
 
-<<<<<<< HEAD
-=======
 data = response.json() 
 json.dumps(data,indent=4)
->>>>>>> 957b7873b7a6b20e8676036ca8f89b63e14192df
 
  
 Realtime_currency_exchange = data["Realtime Currency Exchange Rate"] 
