@@ -64,7 +64,7 @@ try:
             day=currentvalue[0] 
 #extract the values in current_value and set it to a variable known as pre_value
             prev_value=float(currentvalue[4]) 
-            ProfitnLoss=(day,SGD)
+            ProfitnLoss=(f"[PROFIT DEFICIT] DAY:{day} AMOUNT:SGD{SGD}")
             profitloss.append(ProfitnLoss)  
             prev_value=float(currentvalue[4])
     
