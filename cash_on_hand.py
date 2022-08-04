@@ -48,7 +48,7 @@ try:
 
             day=current_figure[0] 
             prev_figure=float(current_figure[1]) 
-            Cash=(day,SGD) 
+            Cash=(f"[CASH DEFICIT] DAY:{day}, AMOUNT:SGD{SGD}")
             loss_days.append(Cash) 
             prev_figure=float(current_figure[1]) 
             
