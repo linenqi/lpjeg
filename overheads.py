@@ -4,17 +4,14 @@ url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_cu
 response = requests.get(url)
 
 import json
-<<<<<<< HEAD
 data = response.json()
 json.dumps(data,indent = 4)
-=======
 try:
     data = response.json()
     print(json.dumps(data,indent = 4))
 except Exception as e:
         print("An error has occured.\nReason:{e}")
 
->>>>>>> 95b72f2978ac5f5c2efc5d2f4d7159952228faa2
 
 Realtime_currency_exchange = data["Realtime Currency Exchange Rate"]
 Exchange_Rate = (float(Realtime_currency_exchange["5. Exchange Rate"]))
