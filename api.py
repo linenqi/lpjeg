@@ -1,8 +1,5 @@
 import requests
 from pathlib import Path
-
-from cash_on_hand import Cash
-from overheads import Overheads
 my_api = '9UMIAMTHXFT52AUI'
 url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey={my_api}'
 response = requests.get(url)
