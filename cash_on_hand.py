@@ -13,7 +13,7 @@ print(json.dumps(data,indent=4))
  
 Realtime_currency_exchange = data["Realtime Currency Exchange Rate"] 
 Exchange_Rate = (float(Realtime_currency_exchange['5. Exchange Rate'])) 
-print(Exchange_Rate)
+#print(Exchange_Rate)
 
 import re 
 from pathlib import Path
@@ -44,12 +44,11 @@ for current_figure in cash_on_hand:
         """ 
             return USD * Exchange_Rate 
         SGD = (convertUSD_SGD(USD = difference)) 
-        print(SGD)
 
         day = current_figure[0] 
         prev_figure = float(current_figure[1]) 
         Cash = (day,SGD) 
-        cash_on_hand.append(Cash) 
+        loss_days.append(Cash) 
         prev_figure = float(current_figure[1]) 
         
-print(cash_on_hand)
+print(loss_days)
