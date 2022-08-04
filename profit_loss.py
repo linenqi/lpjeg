@@ -33,12 +33,16 @@ for currentvalue in pnldata:
         prev_value = float(currentvalue[4])    
     else:  
         difference =  float(prev_value) - float(currentvalue[4])    
-        def convertUSD_SGD(USD):          
-            """  
+def convertUSD_SGD(USD):
+    try:          
+        """  
         -This function will convert USD to SGD by multiplying exchange rate and the USD and return the converted value  
         - one parameter required USD (as integer or float)  
         """  
-            return USD * ExchangeRate  
+        return USD * ExchangeRate  
+    except Exception as e:
+        print("An error has occured.\nReason:{e}")
+
         SGD = (convertUSD_SGD(USD=difference))  
  
         day = currentvalue[0]  
