@@ -1,14 +1,14 @@
 import requests
 my_api = 'VSAFQ7CP9MDL4PCL'
-url= 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey={my_api}'
-response= requests.get(url)
+url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey={my_api}'
+response = requests.get(url)
 
 import json
-data=response.json()
-print(json.dumps(data,indent=4))
+data = response.json()
+print(json.dumps(data,indent = 4))
 
 Realtime_currency_exchange = data["Realtime Currency Exchange Rate"]
-Exchange_Rate=(float(Realtime_currency_exchange["5. Exchange Rate"]))
+Exchange_Rate = (float(Realtime_currency_exchange["5. Exchange Rate"]))
 print(Exchange_Rate)
 
 import re
@@ -19,8 +19,12 @@ import csv
 #assign file path to overheads csv
 file_path = Path.cwd()/"csv_reports"/"overheads.csv"
 
+<<<<<<< HEAD
+full_list = []
+=======
 #create an empty lists known as full_list
 full_list=[]
+>>>>>>> 02c0d8632b8d9c2c3fd860672a9d2cfbcdfa5bca
 with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:
     reader = csv.reader(file)
     next(reader)
@@ -41,7 +45,7 @@ def convertUSD_SGD(USD):
     - one parameter required USD (as integer or float)
     """
     return USD * Exchange_Rate
-SGD=(convertUSD_SGD(USD=highest_value))
+SGD = (convertUSD_SGD(USD=highest_value))
 
 
 print(overheads, SGD)
