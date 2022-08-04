@@ -8,12 +8,22 @@ response = requests.get(url)
 print(response) 
  
 import json  
+<<<<<<< HEAD
 try:
     data = response.json()  
     print(json.dumps(data,indent=4))  
 except Exception as e:
         print("An error has occured.\nReason:{e}")
 
+=======
+<<<<<<< HEAD
+data=response.json()  
+json.dumps(data,indent=4)
+=======
+data = response.json()  
+print(json.dumps(data,indent=4))  
+>>>>>>> 670cfb597fd1acf8e6061e4fc50439830d0a609e
+>>>>>>> bac2cb6e72de42041a7a94cd4966446fe8af193f
   
 Real_Time_Currency_Rate = data["Realtime Currency Exchange Rate"]  
 ExchangeRate = (float(Real_Time_Currency_Rate['5. Exchange Rate'])) 
