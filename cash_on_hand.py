@@ -13,8 +13,11 @@ try:
 except Exception as e:
         print("An error has occured.\nReason:{e}")
 
+<<<<<<< HEAD
+=======
 data = response.json() 
 json.dumps(data,indent=4)
+>>>>>>> 957b7873b7a6b20e8676036ca8f89b63e14192df
 
  
 Realtime_currency_exchange = data["Realtime Currency Exchange Rate"] 
@@ -33,12 +36,12 @@ try :
 except Exception as e:
     print("An error has occured.\nReason:{e}")
 
-    cash_on_hand = [] 
-    loss_days = [] 
-    for values in reader: 
-        cash_on_hand.append(values) 
-     
- 
+cash_on_hand = [] 
+loss_days = [] 
+for values in reader: 
+    cash_on_hand.append(values) 
+    
+
 prev_figure = float(cash_on_hand[0][1]) 
 day = cash_on_hand 
 for current_figure in cash_on_hand: 
@@ -46,6 +49,7 @@ for current_figure in cash_on_hand:
         prev_figure = float(current_figure[1])  #replace prev with curr 
     else: 
         difference = float(prev_figure) - float(current_figure[1])   
+<<<<<<< HEAD
 def convertUSD_SGD(USD):  
     try:           
         """ 
@@ -57,11 +61,25 @@ def convertUSD_SGD(USD):
         print(f"An error has occured.\nReason:{e}")
   
         SGD = (convertUSD_SGD(USD = difference)) 
+=======
+>>>>>>> fe5718c9d5b390cc0dd07fd186262d1faca5ca56
 
-        day = current_figure[0] 
-        prev_figure = float(current_figure[1]) 
-        Cash = (day,SGD) 
-        loss_days.append(Cash) 
-        prev_figure = float(current_figure[1]) 
-        
+def convertUSD_SGD(USD):  
+    try:           
+        """ 
+        -This function will convert USD to SGD by multiplying exchange rate and return the converted value 
+        - one parameter required USD (as integer or float) 
+        """ 
+        return USD * Exchange_Rate 
+    except Exception as e:
+        print(f"An error has occured.\nReason:{e}")
+
+    SGD = (convertUSD_SGD(USD = difference)) 
+
+    day = current_figure[0] 
+    prev_figure = float(current_figure[1]) 
+    Cash = (day,SGD) 
+    loss_days.append(Cash) 
+    prev_figure = float(current_figure[1]) 
+    
 print(loss_days)
