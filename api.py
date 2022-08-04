@@ -4,8 +4,8 @@ url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_cu
 response = requests.get(url)
 print(response)
 
-import json
 try:
+    import json
     data = response.json()
     print(json.dumps(data,indent=4))
 except Exception as e:
