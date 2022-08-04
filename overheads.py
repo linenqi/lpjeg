@@ -16,8 +16,10 @@ from pathlib import Path
 # Import csv module
 import csv
 
+#assign file path to overheads csv
 file_path = Path.cwd()/"csv_reports"/"overheads.csv"
 
+#create an empty lists known as full_list
 full_list=[]
 with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:
     reader = csv.reader(file)
