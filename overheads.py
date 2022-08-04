@@ -27,7 +27,6 @@ file_path = Path.cwd()/"csv_reports"/"overheads.csv"
 
 #create an empty lists known as full_list
 full_list=[]
-<<<<<<< HEAD
 #try:
 with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:
         reader = csv.reader(file)
@@ -35,7 +34,6 @@ with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:
         for line in reader:
             #print(line)
             full_list.append(line)
-=======
 try:
     with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:
         reader = csv.reader(file)
@@ -46,7 +44,6 @@ except Exception as e:
     for line in reader:
         #print(line)
         full_list.append(line)
->>>>>>> 95b72f2978ac5f5c2efc5d2f4d7159952228faa2
 print(full_list)
 #except Exception as e:
 #print(f"An error has occured.\nReason:{e}")
@@ -61,7 +58,6 @@ for current_value in full_list:
         highest_value = float(current_value[1])
 #assign category, overheads, as current value
         overheads = current_value[0]
-<<<<<<< HEAD
 
 #create a function, convertUSD_SGD, to convert USD to SGD
 def convertUSD_SGD(USD):  
@@ -73,18 +69,16 @@ def convertUSD_SGD(USD):
         return USD * Exchange_Rate
     except Exception as e:
         print(f'An error has occurred.\nReason:{e}')
-=======
 def convertUSD_SGD(USD):   
-try:
-    """
-     -This function will convert USD to SGD by multiplying exchange rate and return the converted value
-    - one parameter required USD (as integer or float)
-    """
-    return USD * Exchange_Rate
-except Exception as e:
-    print("An error has occured.\nReason:{e}")
+    try:
+        """
+        -This function will convert USD to SGD by multiplying exchange rate and return the converted value
+        - one parameter required USD (as integer or float)
+        """
+        return USD * Exchange_Rate
+    except Exception as e:
+        print("An error has occured.\nReason:{e}")
 
->>>>>>> 95b72f2978ac5f5c2efc5d2f4d7159952228faa2
 SGD = (convertUSD_SGD(USD=highest_value))
 overhead=(f'{overheads} SGD{SGD}')
 print(overhead)

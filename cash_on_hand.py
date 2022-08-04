@@ -46,15 +46,15 @@ for current_figure in cash_on_hand:
         prev_figure = float(current_figure[1])  #replace prev with curr 
     else: 
         difference = float(prev_figure) - float(current_figure[1])   
-        def convertUSD_SGD(USD):  
-        try:           
-            """ 
-            -This function will convert USD to SGD by multiplying exchange rate and return the converted value 
-            - one parameter required USD (as integer or float) 
-            """ 
-            return USD * Exchange_Rate 
-        except Exception as e:
-            print(f"An error has occured.\nReason:{e}")
+def convertUSD_SGD(USD):  
+    try:           
+        """ 
+        -This function will convert USD to SGD by multiplying exchange rate and return the converted value 
+        - one parameter required USD (as integer or float) 
+        """ 
+        return USD * Exchange_Rate 
+    except Exception as e:
+        print(f"An error has occured.\nReason:{e}")
   
         SGD = (convertUSD_SGD(USD = difference)) 
 
