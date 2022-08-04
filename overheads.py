@@ -6,10 +6,13 @@ response= requests.get(url)
 
 try:
     import json
-    data=response.json()
-    print(json.dumps(data,indent=4))
+#use .json to retrieve data and stored as JSON object from the API and name it as data_retrieved.
+    data_retrieved=response.json()
+    json.dumps(data_retrieved,indent=4)
 
-    Realtime_currency_exchange = data["Realtime Currency Exchange Rate"]
+#extract Realtime Currency Exchange Rate from data_retrieved and set it to variable, Realtime_currency_exchange.
+    Realtime_currency_exchange = data_retrieved["Realtime Currency Exchange Rate"]
+#extract data from exchange rate 
     Exchange_Rate=(float(Realtime_currency_exchange["5. Exchange Rate"]))
     print(Exchange_Rate)
 
@@ -18,7 +21,7 @@ try:
     # Import csv module
     import csv
 
-    file_path = Path.cwd()/"pfb"/"csv_reports"/"overheads.csv"
+    file_path = Path.cwd()/"csv_reports"/"overheads.csv"
 
     full_list=[]
     with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:
