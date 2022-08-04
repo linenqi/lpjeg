@@ -2,7 +2,7 @@ from pathlib import Path
 import csv 
 import requests 
 my_api = 'VSAFQ7CP9MDL4PCL'
-url= 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey={my_api}'
+url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey={my_api}'
  
 response = requests.get(url) 
  
@@ -34,7 +34,7 @@ prev_figure = float(cash_on_hand[0][1])
 day = cash_on_hand 
 for current_figure in cash_on_hand: 
     if float(current_figure[1]) >= float(prev_figure): 
-        prev_figure=float(current_figure[1])  #replace prev with curr 
+        prev_figure = float(current_figure[1])  #replace prev with curr 
     else: 
         difference = float(prev_figure) - float(current_figure[1])   
         def convertUSD_SGD(USD):         
