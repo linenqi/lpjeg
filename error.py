@@ -1,11 +1,9 @@
 def test01():
-
-        # codes and stuff
-
-
+    try:
     print(f"It's working")
     print("An error has occured")
-
+    except Exception as e:
+        print("An error has ovccured.\nReasin:{e}")
 
 
 def test02():
