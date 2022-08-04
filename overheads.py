@@ -1,6 +1,6 @@
 
 import requests
-my_api = 'VSAFQ7CP9MDL4PCL'
+my_api = '9UMIAMTHXFT52AUI'
 url= 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey={my_api}'
 response= requests.get(url)
 
@@ -57,7 +57,7 @@ try:
         return USD * Exchange_Rate
 #create a variable known as SGD and assign the converted amount from USD to SGD into the variable, SGD
     SGD=(convertUSD_SGD(USD=highest_value))
-    Overheads = (f'[HIGHEST OVERHEADS] {overheads}: SGD {SGD}')
+    Overheads = (f"HIGHEST OVERHEADS {overheads}: SGD{SGD}")
     print(Overheads)
-except Exception as e:
-        print("An error has occured.\nReason:{e}")
+except Exception:
+        print("An error has occured.")

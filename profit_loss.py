@@ -1,7 +1,7 @@
 from pathlib import Path  
 import csv  
 import requests  
-my_api = 'VSAFQ7CP9MDL4PCL' 
+my_api = '9UMIAMTHXFT52AUI' 
 url= 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey={my_api}' 
  
 response = requests.get(url) 
@@ -64,10 +64,10 @@ try:
             day=currentvalue[0] 
 #extract the values in current_value and set it to a variable known as pre_value
             prev_value=float(currentvalue[4]) 
-            ProfitnLoss = (f"[CASH DEFICIT] DAY: {day}, AMOUNT:SGD{SGD}")
-#append ProfitnLoss to profitloss
+            ProfitnLoss=(day,SGD)
             profitloss.append(ProfitnLoss)  
+            prev_value=float(currentvalue[4])
     
     print(profitloss)
-except Exception as e:
-        print("An error has occured.\nReason:{e}")
+except Exception:
+        print("An error has occured.")

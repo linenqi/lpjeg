@@ -11,11 +11,27 @@ file_path = Path.cwd()/"summary_report.txt"
 #print(file_path.exists)
 
 #`file_path` is a variable assigned to file after opening it
-with file_path.open(mode='a', encoding='UTF-8') as file:
-    file.writelines(profit_loss.ProfitnLoss)
-    file.writelines(overheads.Overheads)
-    file.writelines(loss_days)
-
-
-
-
+with file_path.open(mode='a',encoding='UTF-8',newline='') as file :
+    file.write(f'[REAL TIME CURRENCY CONVERSION RATE] USD1= SGD{api.Exchange_Rate}')
+    file.write('\n')
+    file.write(f'{overheads.Overheads}')
+    file.write('\n')
+    file.write(f" {cash_on_hand.loss_days[0]}")
+    file.write('\n')
+    file.write(f'{cash_on_hand.loss_days[1]}')
+    file.write('\n')
+    file.write(f'{cash_on_hand.loss_days[2]}')
+    file.write('\n')
+    file.write(f'{cash_on_hand.loss_days[3]}')
+    file.write('\n')
+    file.write(f'{cash_on_hand.loss_days[4]}')
+    file.write('\n')
+    file.write(f'{profit_loss.profitloss[0]}')
+    file.write('\n')
+    file.write(f'{profit_loss.profitloss[1]}')
+    file.write('\n')
+    file.write(f'{profit_loss.profitloss[2]}')
+    file.write('\n')
+    file.write(f'{profit_loss.profitloss[3]}')
+    file.write('\n')
+    file.write(f'{profit_loss.profitloss[4]}')
