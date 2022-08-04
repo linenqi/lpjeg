@@ -8,21 +8,28 @@ response = requests.get(url)
 print(response) 
  
 import json  
-data = response.json()  
-print(json.dumps(data,indent=4))  
+try:
+    data = response.json()  
+    print(json.dumps(data,indent=4))  
+except Exception as e:
+        print("An error has occured.\nReason:{e}")
+
   
 Real_Time_Currency_Rate = data["Realtime Currency Exchange Rate"]  
 ExchangeRate = (float(Real_Time_Currency_Rate['5. Exchange Rate'])) 
  
 file_path = Path.cwd()/"csv_reports"/"profit-and-loss-usd.csv" 
- 
-with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:  
-    reader = csv.reader(file)  
-    next(reader)  
-    profitloss = []  
-    pnldata = []  
-    for value in reader:  
-        pnldata.append(value)  
+
+try:
+    with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:  
+        reader = csv.reader(file)  
+        next(reader) 
+except Exception as e:
+        print("An error has occured.\nReason:{e}")
+        profitloss = []  
+        pnldata = []  
+        for value in reader:  
+            pnldata.append(value)  
       
 prev_value = float(pnldata[0][4])  
 day = pnldata 
@@ -31,12 +38,16 @@ for currentvalue in pnldata:
         prev_value = float(currentvalue[4])    
     else:  
         difference =  float(prev_value) - float(currentvalue[4])    
-        def convertUSD_SGD(USD):          
+        def convertUSD_SGD(USD):
+        try:          
             """  
-        -This function will convert USD to SGD by multiplying exchange rate and the USD and return the converted value  
-        - one parameter required USD (as integer or float)  
-        """  
-            return USD * ExchangeRate  
+            -This function will convert USD to SGD by multiplying exchange rate and the USD and return the converted value  
+            - one parameter required USD (as integer or float)  
+            """  
+                return USD * ExchangeRate 
+        except Exception as e:
+                print("An error has occured.\nReason:{e}")
+ 
         SGD = (convertUSD_SGD(USD=difference))  
  
         day = currentvalue[0]  

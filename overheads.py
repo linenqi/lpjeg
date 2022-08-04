@@ -4,8 +4,12 @@ url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_cu
 response = requests.get(url)
 
 import json
-data = response.json()
-print(json.dumps(data,indent = 4))
+try:
+    data = response.json()
+    print(json.dumps(data,indent = 4))
+except Exception as e:
+        print("An error has occured.\nReason:{e}")
+
 
 Realtime_currency_exchange = data["Realtime Currency Exchange Rate"]
 Exchange_Rate = (float(Realtime_currency_exchange["5. Exchange Rate"]))
@@ -22,9 +26,13 @@ file_path = Path.cwd()/"csv_reports"/"overheads.csv"
 full_list = []
 #create an empty lists known as full_list
 full_list=[]
-with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:
-    reader = csv.reader(file)
-    next(reader)
+try:
+    with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file:
+        reader = csv.reader(file)
+        next(reader)
+except Exception as e:
+    print("An error has occured.\nReason:{e}")
+
     for line in reader:
         #print(line)
         full_list.append(line)
@@ -36,12 +44,16 @@ for current_value in full_list:
     if float(current_value[1]) > highest_value:
         highest_value = float(current_value[1])
         overheads = current_value[0]
-def convertUSD_SGD(USD):        
+def convertUSD_SGD(USD):   
+try:
     """
-    -This function will convert USD to SGD by multiplying exchange rate and return the converted value
+     -This function will convert USD to SGD by multiplying exchange rate and return the converted value
     - one parameter required USD (as integer or float)
     """
     return USD * Exchange_Rate
+except Exception as e:
+    print("An error has occured.\nReason:{e}")
+
 SGD = (convertUSD_SGD(USD=highest_value))
 
 

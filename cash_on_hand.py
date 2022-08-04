@@ -7,8 +7,12 @@ url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_cu
 response = requests.get(url) 
  
 import json 
-data = response.json() 
-print(json.dumps(data,indent=4)) 
+try:
+    data = response.json() 
+    print(json.dumps(data,indent=4))
+except Exception as e:
+        print("An error has occured.\nReason:{e}")
+
 
  
 Realtime_currency_exchange = data["Realtime Currency Exchange Rate"] 
@@ -20,10 +24,13 @@ from pathlib import Path
 #import csv moduele
 import csv 
 file_path = Path.cwd()/"csv_reports"/"cash-on-hand-usd.csv"
+try :
+    with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file: 
+        reader = csv.reader(file) 
+        next(reader) 
+except Exception as e:
+    print("An error has occured.\nReason:{e}")
 
-with file_path.open(mode = "r",encoding = "UTF-8", newline="") as file: 
-    reader = csv.reader(file) 
-    next(reader) 
     cash_on_hand = [] 
     loss_days = [] 
     for values in reader: 
@@ -37,12 +44,16 @@ for current_figure in cash_on_hand:
         prev_figure = float(current_figure[1])  #replace prev with curr 
     else: 
         difference = float(prev_figure) - float(current_figure[1])   
-        def convertUSD_SGD(USD):         
+        def convertUSD_SGD(USD):  
+        try:           
             """ 
-        -This function will convert USD to SGD by multiplying exchange rate and return the converted value 
-        - one parameter required USD (as integer or float) 
-        """ 
+            -This function will convert USD to SGD by multiplying exchange rate and return the converted value 
+            - one parameter required USD (as integer or float) 
+            """ 
             return USD * Exchange_Rate 
+        except Exception as e:
+            print(f"An error has occured.\nReason:{e}")
+  
         SGD = (convertUSD_SGD(USD = difference)) 
 
         day = current_figure[0] 

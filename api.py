@@ -5,6 +5,9 @@ response = requests.get(url)
 print(response)
 
 import json
-data = response.json()
-print(json.dumps(data,indent=4))
+try:
+    data = response.json()
+    print(json.dumps(data,indent=4))
+except Exception as e:
+        print("An error has occured.\nReason:{e}")
 
