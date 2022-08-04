@@ -70,14 +70,14 @@ def convertUSD_SGD(USD):
     except Exception as e:
         print(f'An error has occurred.\nReason:{e}')
 def convertUSD_SGD(USD):   
-try:
-    """
-     -This function will convert USD to SGD by multiplying exchange rate and return the converted value
-    - one parameter required USD (as integer or float)
-    """
-    return USD * Exchange_Rate
-except Exception as e:
-    print("An error has occured.\nReason:{e}")
+    try:
+        """
+        -This function will convert USD to SGD by multiplying exchange rate and return the converted value
+        - one parameter required USD (as integer or float)
+        """
+        return USD * Exchange_Rate
+    except Exception as e:
+        print("An error has occured.\nReason:{e}")
 
 SGD = (convertUSD_SGD(USD=highest_value))
 overhead=(f'{overheads} SGD{SGD}')
